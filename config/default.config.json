@@ -1,0 +1,26 @@
+{
+  "port": 3007,
+  "logger": {
+    "level": "info",
+    "format": "text"
+  },
+  "db": {
+    "host": "localhost",
+    "port": 5438,
+    "username": "user",
+    "password": "password",
+    "database": "ms_ranking",
+    "maxPoolSize": 10,
+    "ssl": false
+  },
+  "auth": {
+    "internalPublicKeyPath": "certs/internal.pub"
+  },
+  "microServices": {
+    "msUserUrl": "localhost:5001",
+    "msPostUrl": "localhost:5002",
+    "msEventUrl": "localhost:5003",
+    "msSocialUrl": "localhost:5004",
+    "msWsUrl": "localhost:5005"
+  }
+}

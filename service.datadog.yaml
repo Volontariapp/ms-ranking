@@ -1,0 +1,9 @@
+schema-version: v2.2
+dd-service: ms-ranking
+team: volontariapp
+application: volontariapp
+description: Microservice gRPC de classement personnalisé des événements et des posts par utilisateur.
+tier: backend
+type: web
+repos:
+  - url: https://github.com/Volontariapp/ms-ranking

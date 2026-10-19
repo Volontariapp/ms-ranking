@@ -1,0 +1,13 @@
+{
+  "db": {
+    "host": "localhost",
+    "port": 5438,
+    "username": "user",
+    "password": "password",
+    "database": "ms_ranking"
+  },
+  "logger": {
+    "level": "debug",
+    "format": "text"
+  }
+}
