@@ -1,12 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { RankingRateLimitService, type RankingListKind } from '@volontariapp/domain-ranking';
 import { Logger } from '@volontariapp/logger';
+import type { RefreshOutcome } from '../interfaces/refresh-outcome.interface.js';
 import { RankingJobService } from './ranking-job.service.js';
-
-export interface RefreshOutcome {
-  accepted: boolean;
-  refreshThrottled: boolean;
-}
 
 @Injectable()
 export class RankingRefreshService {
