@@ -21,6 +21,15 @@
     "msPostUrl": "localhost:5002",
     "msEventUrl": "localhost:5003",
     "msSocialUrl": "localhost:5004",
-    "msWsUrl": "localhost:5005"
+    "msWsUrl": "localhost:5005",
+    "msRankingUrl": "0.0.0.0:5007"
+  },
+  "ranking": {
+    "staleAfterHours": 24,
+    "feedStaleAfterHours": 2,
+    "requestTtlSeconds": 120,
+    "debounceSeconds": 30,
+    "locationRefreshKm": 10,
+    "passCooldownDays": 30
   }
 }

@@ -21,6 +21,16 @@
     "msPostUrl": "MS_POST_URL",
     "msEventUrl": "MS_EVENT_URL",
     "msSocialUrl": "MS_SOCIAL_URL",
-    "msWsUrl": "MS_WS_URL"
+    "msWsUrl": "MS_WS_URL",
+    "msRankingUrl": "MS_RANKING_URL"
+  },
+  "ranking": {
+    "staleAfterHours": "RANKING_STALE_AFTER_HOURS",
+    "feedStaleAfterHours": "RANKING_FEED_STALE_AFTER_HOURS",
+    "requestTtlSeconds": "RANKING_REQUEST_TTL_SECONDS",
+    "debounceSeconds": "RANKING_DEBOUNCE_SECONDS",
+    "locationRefreshKm": "RANKING_LOCATION_REFRESH_KM",
+    "passCooldownDays": "RANKING_PASS_COOLDOWN_DAYS",
+    "locationKey": "RANKING_LOCATION_KEY"
   }
 }

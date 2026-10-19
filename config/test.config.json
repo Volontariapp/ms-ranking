@@ -3,5 +3,8 @@
   "logger": {
     "level": "error",
     "format": "text"
+  },
+  "ranking": {
+    "locationKey": "test-only-location-key-32-bytes!"
   }
 }
