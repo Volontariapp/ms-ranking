@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { DataSource } from 'typeorm';
 import { JobsOutboxEntity, JobsOutboxModel } from '@volontariapp/database';
-import { RankingRequestService, type RankingListKind } from '@volontariapp/domain-ranking';
+import { RankingRequestService } from '@volontariapp/domain-ranking';
 import { Logger } from '@volontariapp/logger';
-import { RankingQueue, type RankingComputeReason } from '@volontariapp/messaging';
+import { RankingQueue } from '@volontariapp/messaging';
 import { JobsOutboxRepository } from '@volontariapp/outbox';
 import { AppConfigService } from '../../../config/app-config.service.js';
 import {
@@ -12,12 +12,7 @@ import {
   IMMEDIATE_REASONS,
   JOB_EMITTER,
 } from '../constants/ranking-job.constants.js';
-
-export interface RequestComputeInput {
-  userId: string;
-  listKind: RankingListKind;
-  reason: RankingComputeReason;
-}
+import type { RequestComputeInput } from '../interfaces/request-compute-input.interface.js';
 
 @Injectable()
 export class RankingJobService {

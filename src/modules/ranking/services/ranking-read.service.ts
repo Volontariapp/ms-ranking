@@ -16,15 +16,10 @@ import { Logger } from '@volontariapp/logger';
 import { AppConfigService } from '../../../config/app-config.service.js';
 import { COMPUTE_JOB_TYPE, RANKING_NOT_READY } from '../constants/ranking-job.constants.js';
 import type { RankingPageDTO } from '../dto/response/ranking-page.response.dto.js';
-import { RankingTransformer, type RankedRow } from '../transformers/ranking.transformer.js';
+import type { ReadRankingInput } from '../interfaces/read-ranking-input.interface.js';
+import type { RankedRow } from '../interfaces/ranked-row.interface.js';
+import { RankingTransformer } from '../transformers/ranking.transformer.js';
 import { RankingJobService } from './ranking-job.service.js';
-
-export interface ReadRankingInput {
-  userId: string;
-  listKind: RankingListKind;
-  cursor?: string;
-  limit?: number;
-}
 
 @Injectable()
 export class RankingReadService {
