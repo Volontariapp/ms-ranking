@@ -56,7 +56,19 @@ export class RankingJobService {
         target: immediate ? RankingQueue.FALLBACK_RANKING : BACKGROUND_QUEUE[listKind],
         payload: { userId, reason, requestedAt },
       });
-      await new JobsOutboxRepository(manager.getRepository(JobsOutboxModel)).create(job);
+      const outbox = new JobsOutboxRepository(manager.getRepository(JobsOutboxModel));
+      // The payload interfaces of messaging have no index signature, the repository wants a JsonObject.
+      await outbox.create({
+        id: job.id,
+        status: job.status,
+        attempts: job.attempts,
+        type: job.type,
+        emitter: job.emitter,
+        emitterId: job.emitterId,
+        target: job.target,
+        scheduledAt: job.scheduledAt,
+        payload: { userId, reason, requestedAt },
+      });
       this.logger.info(
         `Compute job ${job.id} queued for user ${userId} (${listKind}, ${reason}) on ${job.target}`,
       );
