@@ -9,6 +9,8 @@ import { AppModule } from './app.module.js';
 import { loadConfig } from '@volontariapp/config';
 import { CustomConfig } from './config/base-config.js';
 import { Logger } from '@volontariapp/logger';
+import { GRPC_MICROSERVICES, getGrpcOptions } from '@volontariapp/contracts-nest';
+import { AppConfigService } from './config/app-config.service.js';
 
 function resolveConfigDirectory(): string {
   const currentFileDir = dirname(fileURLToPath(import.meta.url));
@@ -32,8 +34,12 @@ async function bootstrap() {
     logger,
   });
 
-  // The gRPC server (connectMicroservice with GRPC_MICROSERVICES.RANKING) is added once
-  // the ranking contracts are published (ticket 3.2).
+  const configService = app.get(AppConfigService);
+
+  app.connectMicroservice(
+    getGrpcOptions(GRPC_MICROSERVICES.RANKING, configService.microServices.msRankingUrl),
+    { inheritAppConfig: true },
+  );
 
   const config = new DocumentBuilder()
     .setTitle('Ranking Service')
@@ -46,6 +52,8 @@ async function bootstrap() {
 
   app.enableShutdownHooks();
 
+  await app.startAllMicroservices();
+  logger.log(`gRPC server listening on ${configService.microServices.msRankingUrl}`);
   await app.listen(appConfig.port);
   logger.log(`HTTP server listening on port ${String(appConfig.port)}`);
 }

@@ -30,6 +30,7 @@ describe('AppConfigService', () => {
         msEventUrl: 'localhost:5003',
         msSocialUrl: 'localhost:5004',
         msWsUrl: 'localhost:5005',
+        msRankingUrl: '0.0.0.0:5007',
       },
     };
 

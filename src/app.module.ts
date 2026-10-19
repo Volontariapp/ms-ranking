@@ -5,8 +5,10 @@ import { GrpcValidationPipe } from '@volontariapp/validation-nest';
 import { HealthModule } from '@volontariapp/health-check-nest';
 import { TerminusModule } from '@nestjs/terminus';
 import { AuthModule, GrpcInternalGuard } from '@volontariapp/auth';
+import { FeedbackAction, RankingListKind } from '@volontariapp/contracts-nest';
 import { AppConfigModule } from './config/app-config.module.js';
 import type { CustomConfig } from './config/base-config.js';
+import { RankingModule } from './modules/ranking/ranking.module.js';
 import { DatabaseModule } from './providers/database/database.module.js';
 
 @Module({
@@ -19,6 +21,7 @@ export class AppModule {
       imports: [
         AppConfigModule.forRoot(config),
         DatabaseModule.forRoot(config.db),
+        RankingModule,
         AuthModule.registerMicroservice(config.auth),
         TerminusModule.forRoot({}),
         HealthModule.register({
@@ -33,7 +36,13 @@ export class AppModule {
         },
         {
           provide: APP_PIPE,
-          useFactory: (): GrpcValidationPipe => new GrpcValidationPipe(),
+          useFactory: (): GrpcValidationPipe =>
+            new GrpcValidationPipe({
+              enumMaps: {
+                listKind: RankingListKind,
+                action: FeedbackAction,
+              },
+            }),
         },
         {
           provide: APP_GUARD,

@@ -9,5 +9,8 @@
   "logger": {
     "level": "debug",
     "format": "text"
+  },
+  "ranking": {
+    "locationKey": "local-only-location-key-32-byte!"
   }
 }

@@ -26,4 +26,8 @@ export class AppConfigService {
   get microServices() {
     return this.config.microServices;
   }
+
+  get ranking() {
+    return this.config.ranking;
+  }
 }
