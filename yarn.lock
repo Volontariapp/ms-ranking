@@ -1662,14 +1662,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nestjs/axios@npm:^4.0.1":
-  version: 4.0.1
-  resolution: "@nestjs/axios@npm:4.0.1"
+"@nestjs/axios@npm:^12.0.1":
+  version: 12.0.1
+  resolution: "@nestjs/axios@npm:12.0.1"
   peerDependencies:
-    "@nestjs/common": ^10.0.0 || ^11.0.0
+    "@nestjs/common": ^10.0.0 || ^11.0.0 || ^12.0.0
     axios: ^1.3.1
     rxjs: ^7.0.0
-  checksum: 10c0/6290f6ceaab2ea1000ee705dfd81da8cd776eb9fb388287a74a4faecf0afd8a8cdef7f6cc3afe2a9b10e47067df027280ca1ddb75b7885ff365e2faed37b10c7
+  checksum: 10c0/115e9b35512f3d43be55e42df65da556933ba246268f7bc15025f29e77c3ecbe40d51cde05de5e13ed9ce51c6a6ac004119f09ff21ddbc0256053c43a1bf9239
   languageName: node
   linkType: hard
 
@@ -9706,7 +9706,7 @@ __metadata:
     "@eslint/js": "npm:^9.18.0"
     "@grpc/grpc-js": "npm:^1.14.3"
     "@grpc/proto-loader": "npm:^0.8.0"
-    "@nestjs/axios": "npm:^4.0.1"
+    "@nestjs/axios": "npm:^12.0.1"
     "@nestjs/cli": "npm:^11.0.0"
     "@nestjs/common": "npm:^11.1.17"
     "@nestjs/config": "npm:^4.0.3"
