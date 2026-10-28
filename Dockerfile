@@ -2,7 +2,8 @@
 FROM node:26-alpine AS base
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
-RUN corepack enable && corepack prepare yarn@4.12.0 --activate
+# Node 25+ no longer bundles corepack
+RUN npm install -g corepack@0.36.0 && corepack enable && corepack prepare yarn@4.12.0 --activate
 
 # 2. DEVELOPMENT & BUILD : On installe tout et on compile
 FROM base AS builder
