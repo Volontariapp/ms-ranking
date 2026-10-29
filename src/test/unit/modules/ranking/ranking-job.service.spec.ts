@@ -87,6 +87,29 @@ describe('RankingJobService (Unit)', () => {
     expect(job.scheduledAt?.getTime()).toBeGreaterThanOrEqual(before + 30_000);
   });
 
+  it('stores the trace context captured for the job in the persisted row', async () => {
+    const traceparent = '00-0af7651916cd43dd8448eb211c80319c-b7ad6b7169203331-01';
+    jest.spyOn(requestService, 'requestCompute').mockResolvedValue({ requestedAt, needsJob: true });
+    jest.spyOn(JobsOutboxEntity, 'createJob').mockReturnValue(
+      JobsOutboxEntity.createJob({
+        type: 'ranking.compute_user_ranking',
+        emitter: 'ms-ranking',
+        emitterId: TEST_USER_ID,
+        target: 'fallback-ranking-queue',
+        payload: { userId: TEST_USER_ID, reason: 'ON_DEMAND', requestedAt },
+        traceparent,
+      }),
+    );
+
+    await service.requestCompute({
+      userId: TEST_USER_ID,
+      listKind: RankingListKind.EVENT,
+      reason: 'ON_DEMAND',
+    });
+
+    expect(createJob.mock.calls[0]?.[0].traceparent).toBe(traceparent);
+  });
+
   it('writes no job when a recent one already covers the request', async () => {
     const requestCompute = jest
       .spyOn(requestService, 'requestCompute')
