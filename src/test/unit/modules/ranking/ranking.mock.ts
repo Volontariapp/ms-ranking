@@ -9,6 +9,7 @@ import type {
   RankingScoreService,
 } from '@volontariapp/domain-ranking';
 import type { AppConfigService } from '../../../../config/app-config.service.js';
+import type { RankingActiveLocationsService } from '../../../../modules/ranking/services/ranking-active-locations.service.js';
 import type { RankingJobService } from '../../../../modules/ranking/services/ranking-job.service.js';
 import type { RankingPassService } from '../../../../modules/ranking/services/ranking-pass.service.js';
 import type { RankingPositionService } from '../../../../modules/ranking/services/ranking-position.service.js';
@@ -64,4 +65,8 @@ export function createMockAppConfigService(): jest.Mocked<AppConfigService> {
   const mock = createMock<AppConfigService>();
   Object.defineProperty(mock, 'ranking', { value: createTestRankingConfig(), writable: true });
   return mock;
+}
+
+export function createMockActiveLocationsService(): jest.Mocked<RankingActiveLocationsService> {
+  return createMock<RankingActiveLocationsService>();
 }
