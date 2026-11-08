@@ -19,6 +19,7 @@ import {
 } from '@volontariapp/domain-ranking';
 import { RankingCommandController } from './controllers/commands/ranking.command.controller.js';
 import { RankingQueryController } from './controllers/queries/ranking.query.controller.js';
+import { RankingActiveLocationsService } from './services/ranking-active-locations.service.js';
 import { RankingJobService } from './services/ranking-job.service.js';
 import { RankingPassService } from './services/ranking-pass.service.js';
 import { RankingPositionService } from './services/ranking-position.service.js';
@@ -43,6 +44,7 @@ import { RankingRefreshService } from './services/ranking-refresh.service.js';
     RankingRequestService,
     RankingRunService,
     RankingScoreService,
+    RankingActiveLocationsService,
     RankingJobService,
     RankingPassService,
     RankingPositionService,
